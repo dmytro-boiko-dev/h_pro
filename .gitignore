@@ -1,0 +1,20 @@
+# Ignore all build directories for each project
+QtSignalsAndSlots/build/
+
+# Ignore generated files
+*.o
+*.obj
+*.exe
+*.dll
+*.log
+
+# Ignore Qt Creator specific files
+*.user
+*.pro.user
+*.pro.user.*
+*.qmake.stash
+*.qmake.cache
+
+# Ignore IDE-specific files
+.idea/
+.vscode/
