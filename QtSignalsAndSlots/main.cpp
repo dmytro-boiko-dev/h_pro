@@ -3,6 +3,7 @@
 #include "Sensor.h"
 #include "Logger.h"
 #include "Analyzer.h"
+#include "Config.h"
 
 int main(int argc, char *argv[]) {
 
@@ -19,13 +20,13 @@ int main(int argc, char *argv[]) {
 
     QTimer timer;
     QObject::connect(&timer, &QTimer::timeout, [&sensor]() {
-        int value = rand() % 100; // generate random data
+        int value = rand() % Config::RandomLimit; // generate random data
         sensor.newData(value);
     });
-    timer.start(2000); // generate data every 2 seconds
+    timer.start(Config::GenerateTimeout); // generate data every 2 seconds
 
     // print current data every 10 seconds
-    QTimer::singleShot(10000, [&analyzer]() {
+    QTimer::singleShot(Config::PrintTimeout, [&analyzer]() {
         analyzer.reportPrint();
     });
 
