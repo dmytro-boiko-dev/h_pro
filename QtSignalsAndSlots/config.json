@@ -1,0 +1,6 @@
+{
+    "sensor_interval": 1000,
+    "max_memory_size": 10000,
+    "random_limit": 200,
+    "print_timeout": 10000
+}

@@ -23,9 +23,7 @@ add_executable(QtSignalsAndSlots
     Logger.h
     Analyzer.h
     SensorMetric.h
-    Config.h
-    README.md
-    .gitignore
+    resources.qrc
 )
 
 target_link_libraries(QtSignalsAndSlots Qt${QT_VERSION_MAJOR}::Core)

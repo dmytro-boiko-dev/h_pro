@@ -8,7 +8,7 @@
 class Analyzer : public QObject {
     Q_OBJECT
 public:
-    Analyzer(QObject* parent = nullptr);
+    Analyzer(int maxMemorySize, QObject* parent = nullptr);
 
     void reportPrint() const;
 
@@ -17,6 +17,7 @@ public slots:
 
 private:
     QList<SensorMetric> memory;
+    int maxMemorySize;  // Store the maximum memory size
 };
 
 #endif // ANALYZER_H
