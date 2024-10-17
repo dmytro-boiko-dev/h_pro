@@ -1,11 +1,18 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <QQmlContext>
+#include "Logger.h"
 
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
 
+    Logger logger;
+
     QQmlApplicationEngine engine;
+
+    // expose Logger to QML
+    engine.rootContext()->setContextProperty("logger", &logger);
 
     // fail check
     QObject::connect(
@@ -19,3 +26,4 @@ int main(int argc, char *argv[])
 
     return app.exec();
 }
+

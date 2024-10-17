@@ -54,7 +54,23 @@ ApplicationWindow {
             Button { text: "C"; onClicked: clearDisplay(); Layout.margins: 5; Layout.preferredWidth: 80; Layout.preferredHeight: 80; font.pixelSize: 24 }
             Button { text: "/"; onClicked: setOperation("/"); Layout.margins: 5; Layout.preferredWidth: 80; Layout.preferredHeight: 80; font.pixelSize: 24 }
 
-            Button { text: "="; Layout.columnSpan: 4; onClicked: calculateResult(); Layout.margins: 5; Layout.preferredWidth: 320; Layout.preferredHeight: 80; font.pixelSize: 24 }
+            Button {
+                text: "="
+                Layout.columnSpan: 4
+                Layout.margins: 5
+                Layout.preferredWidth: 320
+                Layout.preferredHeight: 80
+                font.pixelSize: 24
+                onClicked: {
+                    var rightOperand = parseFloat(currentDisplay)
+                    var logInput = leftOperand + " " + operation + " " + rightOperand
+                    var result = calculateResult()
+
+                    logger.logToFile(logInput, result)
+
+                    currentDisplay = result
+                }
+            }
         }
     }
 
@@ -67,7 +83,6 @@ ApplicationWindow {
             }
         }
     }
-
 
     function setOperation(op) {
         leftOperand = parseFloat(currentDisplay);
@@ -93,7 +108,7 @@ ApplicationWindow {
             }
         }
 
-        currentDisplay = result.toString();
+        return result.toString();
     }
 
     function clearDisplay() {
