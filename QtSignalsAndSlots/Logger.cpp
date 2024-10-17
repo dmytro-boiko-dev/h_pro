@@ -28,7 +28,6 @@ void Logger::writeData(const SensorMetric& aSensorMetric) {
                            .arg(aSensorMetric.name)
                            .arg(aSensorMetric.value);
 
-    // print the log entry to the console
     qDebug() << logEntry;
 
     // write the log entry to the file

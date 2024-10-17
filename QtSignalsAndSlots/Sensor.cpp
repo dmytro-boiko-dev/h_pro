@@ -1,17 +1,20 @@
 #include "Sensor.h"
 #include <QDebug>
 
-Sensor::Sensor(QObject* parent): QObject(parent) {}
+Sensor::Sensor(const QString &name, QObject *parent)
+    : QObject(parent), sensorName(name) {
+}
 
 void Sensor::newData(int value) {
     SensorMetric metric;
-    metric.name = "Sensor_" + QString::number(rand() % 10 + 1);  // random sensor name
+    metric.name = sensorName;
     metric.value = value;
 
-    qDebug() << "New data generated: Name =" << metric.name << ", Value =" << metric.value;
+    qDebug() << sensorName << ": Name =" << metric.name << ", Value =" << metric.value;
 
-    // emit the signal to notify that new data is ready
     emit dataReady(metric);
 }
 
-#include "moc_Sensor.cpp"
+QString Sensor::getName() const {
+    return sensorName;
+}
