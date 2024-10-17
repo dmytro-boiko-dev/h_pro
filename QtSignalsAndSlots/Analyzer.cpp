@@ -1,8 +1,9 @@
 #include "Analyzer.h"
 #include <QDebug>
-#include "Config.h"
 
-Analyzer::Analyzer(QObject* parent) : QObject(parent) {}
+Analyzer::Analyzer(int maxMemorySize, QObject* parent)
+    : QObject(parent), maxMemorySize(maxMemorySize) {
+}
 
 void Analyzer::reportPrint() const {
     for (const auto& metric : memory) {
@@ -11,8 +12,8 @@ void Analyzer::reportPrint() const {
 }
 
 void Analyzer::analyzeData(const SensorMetric& aSensorMetric) {
-    if (memory.size() >= Config::MaxMemorySize) {
-        memory.pop_front();  // remove oldest data if we exceed the limit
+    if (memory.size() >= maxMemorySize) {
+        memory.pop_front();  // remove the oldest data if the limit is reached
     }
     memory.append(aSensorMetric);  // store new data in memory
 }
