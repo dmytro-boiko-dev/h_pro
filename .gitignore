@@ -1,5 +1,9 @@
 # Ignore all build directories for each project
 QtSignalsAndSlots/build/
+QtCalc/build/
+
+# ignore any build
+**/build/
 
 # Ignore generated files
 *.o
