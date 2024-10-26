@@ -4,6 +4,7 @@ QtCalc/build/
 
 # ignore any build
 **/build/
+**/cmake-build-debug/
 
 # Ignore generated files
 *.o
@@ -21,5 +22,6 @@ QtCalc/build/
 
 # Ignore IDE-specific files
 .idea/
+**/.idea/
 .vscode/
 
